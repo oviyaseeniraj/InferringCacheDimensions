@@ -73,7 +73,8 @@ int get_cache_assoc(int size) {
 */
 int get_block_size() {
   int addr = 0;
-  while (!access_cache(addr)) {
+  access_cache(addr);
+  while (access_cache(addr)) {
     addr = addr + 4;
   }
   return addr;
