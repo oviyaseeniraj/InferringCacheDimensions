@@ -48,7 +48,7 @@ int get_cache_size(int block_size) {
   addr_t address = 0;
   while (access_cache(address))
   {
-    address += block_size;
+    address = cache_size * block_size + block_size;
     if (access_cache(address))
     {
       cache_size *= 2;
