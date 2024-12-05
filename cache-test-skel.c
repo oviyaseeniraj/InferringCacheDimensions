@@ -28,11 +28,11 @@ mystery2:
    Returns the size (in B) of the cache
 */
 int get_cache_size(int block_size) {
-  flush_cache();
-  int cache_size = block_size; // minimum guaranteed size
+  //flush_cache();
+  //int cache_size = block_size; // minimum guaranteed size
 
-  access_cache(0);
-  /*while (access_cache(0))
+  /*access_cache(0);
+  while (access_cache(0))
   {
     addr_t address = 0; //reset to base address
     for (int i = 0; i <= cache_size / block_size; i++)
@@ -45,14 +45,18 @@ int get_cache_size(int block_size) {
   }
   return cache_size;*/
 
-  addr_t address = 0;
-  while (access_cache(address))
-  {
-    address = cache_size * block_size + block_size;
-    if (access_cache(address))
-    {
-      cache_size *= 2;
+  int cache_size = 0;
+  int prev_cache = block_size;
+  flush_cache();
+
+  access_cache(0);
+  while (access_cache(0)) {
+    cache_size = block_size;
+    while (cache_size <= prev_cache) {
+      cache_size += block_size;
+      access_cache(cache_size);
     }
+    prev_cache += block_size;
   }
   return cache_size;
 }
