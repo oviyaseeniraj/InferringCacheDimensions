@@ -54,15 +54,16 @@ int get_cache_assoc(int size) {
   flush_cache();
 
   access_cache(0);
-  while (access_cache(0)) {
-    assoc++;
-    flush_cache();
-
-    for (int i = 1; i <= assoc; i++)
+  while (access_cache(0))
+  {
+    for (int i = 0; i < assoc; i++)
     {
         access_cache(i * size);
     }
+    assoc++;
+    flush_cache();
   }
+  
   return assoc;
 }
 
