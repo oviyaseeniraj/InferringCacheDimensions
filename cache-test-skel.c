@@ -36,7 +36,7 @@ int get_cache_size(int block_size) {
   {
     addr_t address = 0; //reset to base address
     int numBlocks = cache_size / block_size;
-    for (int i = 0; i < numBlocks; i++)
+    for (int i = 0; i <= numBlocks; i++)
     {
       access_cache(address);
       address += block_size;
