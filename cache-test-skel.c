@@ -30,20 +30,15 @@ mystery2:
 int get_cache_size(int block_size) {
   flush_cache();
   int cache_size = block_size; // minimum guaranteed size
-  
-
+  addr_t address = 0; //reset to base address
   access_cache(0);
   while (access_cache(0))
   {
-    addr_t address = 0; //reset to base address
-    int numBlocks = cache_size / block_size;
-    for (int i = 0; i < numBlocks; i++)
-    {
-      access_cache(address);
-      address += block_size;
-    }
+    access_cache(address);
+    address += block_size;
     cache_size = cache_size * 2;
   }
+  flush_cache();
   return cache_size;
 }
 
