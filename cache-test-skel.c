@@ -53,10 +53,12 @@ int get_cache_assoc(int size) {
   int assoc = 0;
   flush_cache();
 
+  int numBlocks = size/get_block_size();
+
   access_cache(0);
   while (access_cache(0))
   {
-    for (int i = 0; i < assoc; i++)
+    for (int i = 0; i <= numBlocks; i++)
     {
         access_cache(i * size);
     }
