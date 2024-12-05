@@ -31,6 +31,7 @@ int get_cache_size(int block_size) {
   flush_cache();
   int cache_size = block_size; // minimum guaranteed size
 
+  access_cache(0);
   while (access_cache(0))
   {
     addr_t address = 0; //reset to base address
