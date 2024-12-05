@@ -58,12 +58,30 @@ int get_cache_assoc(int size) {
   access_cache(0);
   while (access_cache(0))
   {
-    for (int i = 0; i <= numBlocks; i++)
+    for (int i = 0; i <= assoc; i++)
     {
         access_cache(i * size);
     }
     assoc++;
     //flush_cache();
+  }
+  return assoc;
+
+  int set_size = 0;
+  int set_check = 1;
+  int assoc = 0;
+  flush_cache();
+
+  access_cache(0);
+  while (access_cache(0)) {
+    set_size = size;
+    assoc = 0;
+    while (set_size <= set_check) {
+      set_size += size;
+      assoc++;
+      access_cache(set_size);
+    }
+    set_check += size;
   }
   return assoc;
 }
