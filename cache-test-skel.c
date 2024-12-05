@@ -56,7 +56,7 @@ int get_cache_assoc(int size) {
   access_cache(0);
   while (access_cache(0))
   {
-    for (int i = 1; i <= assoc; i++)
+    for (int i = 0; i <= assoc; i++)
     {
         access_cache(i * size);
     }
