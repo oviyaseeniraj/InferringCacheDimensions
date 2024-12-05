@@ -88,6 +88,7 @@ int main(void) {
      ignored by the mystery caches, as they are hard coded.
      You can test your geometry paramter discovery routines by 
      calling cache_init() w/ your own size and block size values. */
+  cache_init(64,16);
   
   block_size = get_block_size();
   size = get_cache_size(block_size);
