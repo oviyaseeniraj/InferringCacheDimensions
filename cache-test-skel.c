@@ -50,7 +50,7 @@ int get_cache_size(int block_size) {
    Returns the associativity of the cache
 */
 int get_cache_assoc(int size) {
-  int assoc = 0;
+  /*int assoc = 0;
   flush_cache();
 
   int numBlocks = size/get_block_size();
@@ -65,7 +65,7 @@ int get_cache_assoc(int size) {
     assoc++;
     //flush_cache();
   }
-  return assoc;
+  return assoc;*/
 
   int set_size = 0;
   int set_check = 1;
