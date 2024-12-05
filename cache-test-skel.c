@@ -41,10 +41,7 @@ int get_cache_size(int block_size) {
       access_cache(address);
       address += block_size;
     }
-    if (access_cache(0))
-    {
-      cache_size = cache_size * 2;
-    }
+    cache_size = cache_size * 2;
     flush_cache();
   }
   return cache_size;
