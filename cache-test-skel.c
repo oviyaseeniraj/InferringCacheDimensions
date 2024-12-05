@@ -29,7 +29,6 @@ mystery2:
 */
 int get_cache_size(int block_size) {
   flush_cache();
-  bool_t is_address_valid = TRUE;
   int cache_size = block_size; // minimum guaranteed size
 
   while (access_cache(0))
