@@ -61,7 +61,7 @@ int get_cache_assoc(int size) {
         access_cache(i * size);
     }
     assoc++;
-    flush_cache();
+    //flush_cache();
   }
   return assoc;
 }
