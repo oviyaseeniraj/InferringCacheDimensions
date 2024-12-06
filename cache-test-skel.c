@@ -37,7 +37,7 @@ int get_cache_size(int block_size) {
   while (access_cache(0))
   {
     cache_size = block_size;
-    while (cache_size < prev_cache)
+    while (cache_size <= prev_cache)
     {
       access_cache(cache_size);
       cache_size += block_size;
