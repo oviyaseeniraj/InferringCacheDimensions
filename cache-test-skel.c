@@ -50,6 +50,10 @@ int get_cache_size(int block_size) {
     }
     prev_cache += block_size;
   }
+  if (!access_cache(cache_size))
+  {
+    return prev_cache;
+  }
   return cache_size;
 }
 
