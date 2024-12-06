@@ -48,7 +48,7 @@ int get_cache_size(int block_size) {
       //   return prev_cache;
       // }
     }
-    prev_cache *= 2;
+    prev_cache += block_size;
   }
   return cache_size;
 }
