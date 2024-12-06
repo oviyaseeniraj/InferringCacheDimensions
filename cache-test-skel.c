@@ -42,59 +42,20 @@ int get_cache_size(int block_size) {
       //access_cache(cache_size);
       cache_size += block_size;
       access_cache(cache_size);
-      if (!access_cache(cache_size))
-      {
-        return prev_cache;
-      }
+      // if (!access_cache(cache_size))
+      // {
+      //   return prev_cache;
+      // }
     }
     prev_cache += block_size;
   }
   return cache_size;
-
-  /*flush_cache();
-  int cache_size = 0;
-  int z = cache_size;
-  int x = 1;
-  while(1) {
-	  for(int k = z; k < cache_size + block_size; k += block_size) {
-		 access_cache(k);
-	  } 
-	  for(int c = 0; c < cache_size + block_size; c+= block_size) {
-		if(!access_cache(c)) {
-		  	x = 0;
-		  	break;
-		}
-	  }
-		if(!x)
-			break;
-		z = cache_size;
-	  i *= 2;
-	  if(i == 0)
-		  i+=cache_size;
-  }
-  return cache_size;*/
 }
 
 /*
    Returns the associativity of the cache
 */
 int get_cache_assoc(int size) {
-  /*int assoc = 0;
-  flush_cache();
-
-  int numBlocks = size/get_block_size();
-
-  access_cache(0);
-  while (access_cache(0))
-  {
-    for (int i = 0; i <= assoc; i++)
-    {
-        access_cache(i * size);
-    }
-    assoc++;
-    //flush_cache();
-  }
-  return assoc;*/
 
   int set_size = 0;
   int set_check = 1;
