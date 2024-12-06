@@ -1,22 +1,23 @@
 /*
-YOUR NAME HERE
+Oviya Seeniraj
+Aneesh Garg
 ECE 154A - Fall 2012
 Lab 2 - Mystery Caches
-Due: 12/3/12, 11:00 pm
+Due: 12/6/24, 11:59 pm
 
 Mystery Cache Geometries:
 mystery0:
-    block size = 
-    cache size = 
-    associativity = 
+    block size = 64 bytes
+    cache size = 4194304 bytes (4 MB)
+    associativity = 16
 mystery1:
-    block size = 
-    cache size = 
-    associativity = 
+    block size = 4 bytes
+    cache size = 4096 bytes (4 KB)
+    associativity = 1
 mystery2:
-    block size = 
-    cache size = 
-    associativity = 
+    block size = 32 bytes
+    cache size = 4096 bytes (4 KB)
+    associativity = 128
 */
 
 #include <stdlib.h>
@@ -39,11 +40,37 @@ int get_cache_size(int block_size) {
     while (cache_size <= prev_cache)
     {
       cache_size += block_size;
-      access_cache(cache_size);
+      if (!access_cache(cache_size))
+      {
+        return prev_cache;
+      }
     }
     prev_cache += block_size;
   }
   return cache_size;
+
+  /*flush_cache();
+  int cache_size = 0;
+  int z = cache_size;
+  int x = 1;
+  while(1) {
+	  for(int k = z; k < cache_size + block_size; k += block_size) {
+		 access_cache(k);
+	  } 
+	  for(int c = 0; c < cache_size + block_size; c+= block_size) {
+		if(!access_cache(c)) {
+		  	x = 0;
+		  	break;
+		}
+	  }
+		if(!x)
+			break;
+		z = cache_size;
+	  i *= 2;
+	  if(i == 0)
+		  i+=cache_size;
+  }
+  return cache_size;*/
 }
 
 /*
