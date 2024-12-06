@@ -46,7 +46,7 @@ int get_cache_size(int block_size) {
       //   break;
       // }
     }
-    if (!access_cache(cache_size))
+    if (!access_cache(0))
     {
       return prev_cache;
     }
