@@ -38,21 +38,17 @@ int get_cache_size(int block_size) {
   {
     printf ("cache_size of %d is valid\n", cache_size);
     cache_size = block_size;
-    while (cache_size <= prev_cache)
+    while (cache_size < prev_cache)
     {
       //access_cache(cache_size);
-      access_cache(cache_size);
       cache_size += block_size;
+      if (access_cache(cache_size));
       // if (!access_cache(cache_size))
       // {
       //   return prev_cache;
       // }
     }
     prev_cache += block_size;
-  }
-  if (!access_cache(cache_size))
-  {
-    return prev_cache;
   }
   return cache_size;
 }
